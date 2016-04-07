@@ -1,0 +1,31 @@
+<?php $data=$block->getTestModel()->getData(); ?>
+<form method="POST" action="<?php echo $this->getUrl('excellence/index/edit'); ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'> 
+
+
+<fieldset class="fieldset">
+        
+        <div class="field note no-label"><?php echo __('Add record to table') ?></div>
+        <input name="id" id="id" title="<?php echo __('id') ?>" value="<?php echo $data['excellence_test_test_id'];?>" class="input-text" type="hidden" data-validate="{required:true}"/>
+        <div class="field name required">
+            <label class="label" for="name"><span><?php echo __('Title') ?></span></label>
+            <div class="control">
+                <input name="title" id="title" title="<?php echo __('Title') ?>" value="<?php echo $data['title'];?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="field is_active required">
+            <label class="label" for="is_active"><span><?php echo __('Status') ?></span></label>
+            <div class="control">
+                <input name="is_active" id="is_active" title="<?php echo __('Status') ?>" value="<?php echo $data['is_active'];?>" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+        <div class="actions-toolbar">
+	        <div class="primary">
+	            <button type="submit" title="<?php echo __('Submit') ?>" class="action submit primary">
+	                <span><?php echo __('Submit') ?></span>
+	            </button>
+	        </div>
+    	</div>
+</fieldset>
+	
+
+</form>
