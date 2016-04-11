@@ -1,3 +1,6 @@
+<?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); // for display pager block which we create in block file.   ?></div>
+    <?php endif ?>
 
 <?php  $_gridrecords = $block->getCollection(); // get collection which we set in block class ?>
 <?php if ($_gridrecords && count($_gridrecords)): ?>

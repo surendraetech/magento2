@@ -9,19 +9,26 @@ class Delete extends \Magento\Framework\App\Action\Action
      * @return void
      */
     protected $_objectManager;
-    
-    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\ObjectManagerInterface $objectManager) 
-    {
-        $this->_objectManager = $objectManager;
+    protected $request;
+    public function __construct(\Magento\Framework\App\Action\Context $context,
+            \Magento\Framework\App\Request\Http $request,
+             \Excellence\Test\Model\TestFactory $testFactory,
+            \Magento\Framework\Message\ManagerInterface $messageManager) 
+    { 
+        $this->_testFactory = $testFactory;      
+        $this->request = $request;
+        $this->_messageManager = $messageManager;
+        
         parent::__construct($context);    
     }
     public function execute()
-    {
-        $post = $this->getRequest()->getParams();
-        $model = $this->_objectManager->create('Excellence\Test\Model\Test');
+    {  
+        $post = $this->request->getParams();
+        $model= $this->_testFactory->create();
         $model->load($post['id']);
         $model->delete($post['id']);
+         $this->_messageManager->addSuccess(__('Deleted your item'));  
         $this->_redirect('*/test/');
-        $this->messageManager->addSuccess(__('Deleted your item'));    
+       
     }
 }

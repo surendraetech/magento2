@@ -4,7 +4,10 @@
         <block
             template="content.phtml"
             class="Excellence\Test\Block\Main"
-            name="excellence_test"/>
+            name="excellence_test">
+            <block class="Magento\Theme\Block\Html\Pager" name="excellence_test_record_pager"/>
+                        
+        </block>
     </referenceContainer>
 </page>
 
